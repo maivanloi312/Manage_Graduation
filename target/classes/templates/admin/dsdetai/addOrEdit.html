@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/fragments/dashboardLayout.html}">
+    <head>
+
+    </head>
+      <body>
+        <section class="row" layout:fragment="content">
+          <div class="col-6 offset-3 mt-4">
+            <form action="/admin/dsdetai/saveOrUpdate" method="post" enctype="multipart/form-data" th:object="${detai}">
+              <div class="card">
+                <div class="card-header">
+                  <h2 th:text="${detai.isEdit? 'Sửa đề tài':'Thêm đề tài'}">Thêm đề tài</h2>
+                </div>
+                <div class="card-body">
+                  <input type="hidden" th:field="*{isEdit}">
+                  <div class="form-group">
+                    <label for="tenDeTai">Tên đề tài: </label>
+                    <input type="text" class="form-control" th:field="*{tenDeTai}" id="tenDeTai" aria-describedby="nameHid" placeholder="Tên đề tài">
+                    <small th:errors="*{tenDeTai}" id="nameHid" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                  <label for="idSinhVien">Sinh viên: </label>
+                  <input th:if="*{isEdit}" type="text" class="form-control" name="idSinhVien" id="idSinhVien" th:field="*{idSinhVien}" aria-describedby="sinhVienHid" readonly>
+                  <select th:unless="*{isEdit}" class="form-control" name="idSinhVien" id="idSinhVien" th:field="*{idSinhVien}">
+                    <option th:each="item: ${dssinhvien}" th:value="${item.idSinhVien}" th:text="${item.tenSinhVien}" 
+                            th:select="${item.idSinhVien == detai.idSinhVien}"> Tên sinh viên</option>
+                  </select>
+                  <small th:errors="*{idSinhVien}" id="sinhVienHid" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                  <label for="idGiangVienHuongDan">Giảng viên hướng dẫn: </label>
+                  <select class="form-control" name="idGiangVienHuongDan" id="idGiangVienHuongDan" th:field="*{idGiangVienHuongDan}">
+                    <option selected value=""></option>
+                    <option th:each="item: ${dsgiangvien}" th:value="${item.idGiangVien}" th:text="${item.tenGiangVien}" 
+                            th:select="${item.idGiangVien == detai.idGiangVienHuongDan}">Tên giảng viên hướng dẫn</option>
+                  </select>
+                  <small th:errors="*{idGiangVienHuongDan}" id="giangVienHuongDanHid" class="form-text text-muted"></small>
+                </div>
+                <div class="input-group form-group">
+                  <span class="input-group-text">Điểm hướng dẫn:</span>
+                  <input type="text" name="diemHuongDan" id="diemHuongDan" th:field="*{diemHuongDan}" class="form-control" placeholder="Điểm hướng dẫn">
+                  <span class="input-group-text">điểm</span>
+                  <small  th:errors="*{diemHuongDan}" id="diemHuongDanHid" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                  <label for="idGiangVienPhanBien">Giảng viên phản biện: </label>
+                  <select class="form-control" name="idGiangVienPhanBien" id="idGiangVienPhanBien" th:field="*{idGiangVienPhanBien}">
+                    <option selected value=""></option>
+                    <option th:each="item: ${dsgiangvien}" th:value="${item.idGiangVien}" th:text="${item.tenGiangVien}" 
+                            th:select="${item.idGiangVien == detai.idGiangVienPhanBien}">Tên giảng viên phản biện</option>
+                  </select>
+                  <small th:errors="*{idGiangVienPhanBien}" id="giangVienPhanBienHid" class="form-text text-muted"></small>
+                </div>
+                <div class="input-group form-group">
+                  <span class="input-group-text">Điểm phản biện:</span>
+                  <input type="text" name="diemPhanBien" id="diemPhanBien" th:field="*{diemPhanBien}" class="form-control" placeholder="Điểm phản biện">
+                  <span class="input-group-text">điểm</span>
+                  <small th:errors="*{diemPhanBien}" id="diemPhanBienHid" class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                  <label for="idTieuBan">Tiểu ban: </label>
+                  <select class="form-control" name="idTieuBan" id="idTieuBan" th:field="*{idTieuBan}">
+                    <option selected value=""></option>
+                    <option th:each="item: ${dstieuban}" th:value="${item.idTieuBan}" th:text="${item.tenTieuBan}" 
+                            th:select="${item.idTieuBan == detai.idTieuBan}">Tên tiểu ban</option>
+                  </select>
+                  <small th:errors="*{idTieuBan}" id="tieuBanHid" class="form-text text-muted"></small>
+                </div>
+                <div class="input-group form-group">
+                  <span class="input-group-text">Điểm tiểu ban:</span>
+                  <input type="text" name="diemTieuBan" id="diemTieuBan" th:field="*{diemTieuBan}" class="form-control" placeholder="Điểm tiểu ban">
+                  <span class="input-group-text">điểm</span>
+                  <small th:errors="*{diemTieuBan}" id="diemTieuBanHid" class="form-text text-muted"></small>
+                </div>
+                  <div class="form-group">
+                    <label for="document">Bản mềm đồ án:</label>
+                    <input type="file" class="form-control-file" name="banMemDoAnFile" id="document" placeholder="Bản mềm đồ án" aria-describedby="fileHelpId">
+                    <small id="fileHelpId" class="form-text text-muted"></small>
+                  </div>                               
+                  <div class="form-group">
+                    <label for="sourcode">Sourcode:</label>
+                    <input type="file" class="form-control-file" name="sourceCodeFile" id="sourcode" placeholder="Sourcode đồ án" aria-describedby="fileHelpId">
+                    <small id="fileHelpId" class="form-text text-muted"></small>
+                  </div>
+                </div>
+                <div class="card-footer text-muted">
+                  <button type="reset" class="btn btn-secondary"><i class="fas fa-backspace"></i> Đặt lại</button>
+                  <a th:href="@{/admin/dsdetai}" class="btn btn-success"><i class="fa fa-list" aria-hidden="true"></i> Xem danh sách</a>
+                  <button class="btn btn-primary"><i class="fas fa-save"></i>
+                    <span th:if="${detai.isEdit}"> Cập nhật</span>
+                    <span th:unless="${detai.isEdit}"> Lưu</span>
+                  </button>
+              </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </body>
+</html>

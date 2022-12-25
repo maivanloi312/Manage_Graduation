@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+
+</head>
+  <body>
+    <div th:fragment="nav">
+      <nav class="col navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="/">PTITHCM</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <!-- <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dshedaotao/search}">Hệ đào tạo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dskhoadaotao/search}">Khóa đào tạo</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dstieuban/search}">Tiểu ban</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dslop/search}">Lớp học</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dssinhvien/search}">Sinh viên</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dsgiangvien/search}">Giảng viên</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dstaikhoan/search}" sec:authorize="hasRole('ROLE_ADMIN')">Tài khoản</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dshoidong/search}" sec:authorize="hasRole('ROLE_ADMIN')">Giảng viên tiểu ban</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dsdetai/search}">Đề tài</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" th:href="@{/admin/dsphancong/search}" sec:authorize="hasRole('ROLE_ADMIN')">Phân công</a>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span sec:authorize="isAnonymous()">Khách</span> [[${#httpServletRequest.remoteUser}]]
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <!-- <a class="dropdown-item" href="/registration" sec:authorize="isAnonymous()">Đăng kí</a> -->
+                <a class="dropdown-item" href="/login" sec:authorize="isAnonymous()">Đăng nhập</a>
+                <a class="dropdown-item" href="/changePassword" sec:authorize ="isAuthenticated()">Đổi mật khẩu</a>
+              </div>
+            </li>
+            <li class="nav-item mt-2">
+              <form sec:authorize ="isAuthenticated()" action="" th:action="@{/logout}" method="post">
+                <input type="submit" value="Đăng xuất"/>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
