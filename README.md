@@ -7,7 +7,8 @@
 - Cài đặt các thư viện và plugin cần thiết như: Lombok, Eclipse Web Developer Tools, Spring Tools 4
 - Tạo database rỗng tên tùy ý sau đó vào file application.properties ở trong src/main/resources cấu hình các thông số như địa chỉ localhost, tên database, username, password khớp với bên SQL Server
 # Cách sử dụng:
-Nhấp chuột phải sau đó chọn start ManageGraduationThesis ở Boot Dashboard, sau đó vào trình duyệt truy cập vào địa chỉ localhost đã cấu hình ở trên để nhận kết quả
+- Nhấp chuột phải sau đó chọn start ManageGraduationThesis ở Boot Dashboard
+- Vào trình duyệt truy cập vào địa chỉ localhost đã cấu hình ở trên để nhận kết quả
 # Những vấn đề cần cải thiện:
 - Chưa có tính năng quên mật khẩu và gửi mail
 - Phần upload tài liệu chỉ có thể xem và tải về không thể chỉnh sửa tài liệu đã upload
