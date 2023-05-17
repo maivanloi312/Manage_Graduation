@@ -18,14 +18,10 @@
 - Em xin chân thành cảm ơn cô Nguyễn Thị Bích Nguyên đã hướng dẫn em thực hiện đồ án này!
 # File báo cáo: 
 https://docs.google.com/document/d/1P1JowcgYrje_rC9-Or7Ev_aUVfw4ezab/edit?usp=sharing&ouid=117659523119613343304&rtpof=true&sd=true
-# Một số hình ảnh của chương trình
-- Diagram
+# Demo
 ![image](https://user-images.githubusercontent.com/85224148/209457728-ef1a51c4-ab60-4f0e-adf6-bdc36ebbf891.png)
-- Đăng nhập
 ![image](https://user-images.githubusercontent.com/85224148/209457640-fae12bda-70ce-4fcf-9ebc-6dab16d92856.png)
-- Trang chủ
 ![image](https://user-images.githubusercontent.com/85224148/209457677-02d1dd18-3dad-4724-90e9-fb53d04f52c3.png)
-- Giao diện xóa đề tài
 ![image](https://user-images.githubusercontent.com/85224148/209457711-b9f65f20-d43e-4f47-bc7c-b62419e71174.png)
 
 
